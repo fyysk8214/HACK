@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="225" viewBox="0 0 250 225">
+  <g stroke="#174663" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="m15 63 93-17 12 99-98 11Z" fill="#1476ba"/><path d="m23 72 78-14 8 73-81 13Z" fill="#8dc386"/><path d="m20 154 109-20 65 53-105 19-66-40Z" fill="#1694d0"/><path d="m32 154 79-13 60 44-81 13Z" fill="#dce8ed"/>
+    <g stroke="#73a4c2" stroke-width="2"><path d="m45 155 72-9m-59 18 72-10m-59 19 72-10m-60 18 72-10M58 154l45 33m-30-36 46 33m-32-36 47 33m-32-35 48 33"/></g>
+    <path d="m57 95 14-17 10 7 13-8 10 15-10 9-9-2-6 21-19-9Z" fill="white"/>
+    <path d="m28 111 20 2-7-22-10-8-6 7 8 7Z" fill="#fff9db"/><path d="m30 82-12-3 3 10 15 3Z" fill="#f08363"/>
+    <path d="m141 49-7-23c-4-11-12-6-9 3l4 14-11-8c-8-5-11 2-5 9l15 13M184 48l8-29c2-11-8-11-9-2l-2 16-5-12c-3-8-10-5-8 5l4 24" fill="#fff6da"/>
+    <ellipse cx="158" cy="180" rx="36" ry="25" fill="#fbf6df"/><ellipse cx="159" cy="148" rx="30" ry="45" fill="#eff6ec"/><path d="m175 147 18-25c5-10 13-6 9 5l-9 26c-4 10-14 14-21 9" fill="#eff6ec"/>
+    <path d="m186 188 16-10 8 5 7-9c5-7 10-1 5 6 10-4 14 2 6 7l-18 9-20 3" fill="#fff6da"/>
+    <path d="m129 142-12-18-11 4 8 27c6 9 17 7 20 0" fill="#f8f7e7"/>
+    <path d="M112 91c-6-36 15-57 46-58 33-1 56 18 52 52-2 32-20 53-48 55-29 1-45-21-50-49Z" fill="#e6f1e9"/>
+    <path d="M118 60c-10 13-9 24-7 38" fill="none" stroke="#0076bd" stroke-width="10"/><path d="M197 54c15 7 20 20 14 38" fill="none" stroke="#0076bd" stroke-width="10"/><ellipse cx="209" cy="77" rx="13" ry="19" fill="#218bc8"/><path d="M117 59c10-32 62-39 84-6" fill="none" stroke="#146bb0" stroke-width="7"/>
+    <path d="M146 56c-17-12-16 14-3 9 11-5-10-14-8-2" fill="none"/><path d="M135 86v5m42-6v5" fill="none" stroke-width="4"/><path d="m150 96 5 4 5-4M139 107c8 18 24 17 31-1-11 5-21 4-31 1Z" fill="#eb93a7"/><ellipse cx="128" cy="102" rx="8" ry="5" fill="#f3b7bd" stroke="none"/><ellipse cx="184" cy="101" rx="8" ry="5" fill="#f3b7bd" stroke="none"/>
+    <path d="m154 141 7 5 7-5v21h-14Z" fill="#0875b8"/>
+    <path d="m89 128 42-4 9 30-44 4Z" fill="#0075b9"/><path d="m96 159 45-4 14 7-43 5Z" fill="#3f9dce"/>
+    <path d="M130 177c0 12 13 14 18 6m10-5c1 13 15 12 18 4" fill="none"/>
+  </g>
+  <text x="106" y="148" fill="white" font-family="Arial" font-size="16" font-weight="bold">i</text>
+  <g fill="none" stroke="#86d6e5" stroke-width="2"><path d="M47 41c13-1 20 6 21 16m-19-10c8-1 13 5 13 11m-11-5c3 0 5 3 5 6"/></g>
+</svg>
