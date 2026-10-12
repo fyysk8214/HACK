@@ -105,9 +105,6 @@ export default function LoginScreen() {
 
   return (
     <div className="login-page">
-      <div className="practice-banner" role="note">
-        {isEnglish ? "LOCAL PRACTICE — This is not the official university service. Use newly created test credentials only." : "로컬 로그인 연습 화면 · 학교 공식 서비스와 연결되지 않습니다. 새로 만든 테스트 아이디와 비밀번호만 사용하세요."}
-      </div>
       <header className="site-header">
         <div className="site-logo" aria-label="인하대학교 I-Class">
           <Image className="brand-emblem" src={images.logo} alt="인하대학교 엠블럼" width={200} height={200} loading="eager" unoptimized />
