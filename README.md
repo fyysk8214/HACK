@@ -34,3 +34,9 @@ SQLite DB는 첫 요청 또는 `npm run db:init` 시 `data/demo.sqlite`에 생�
 검증 명령: `npm run test:auth`, `npm run lint`, `npm run build`.
 
 참고: [Node.js SQLite](https://nodejs.org/download/release/v24.15.0/docs/api/sqlite.html), [Node.js Crypto](https://nodejs.org/download/release/v24.15.0/docs/api/crypto.html).
+
+## 클라우드 빌드 경로
+
+Windows에서는 OneDrive의 기존 캐시와 충돌하지 않도록 `.next-local`에 빌드합니다. 클라우드타입의 Linux 환경에서는 기본 `.next`에 빌드합니다. 클라우드타입의 Output Directory는 기본값 `.next`를 사용하고, GitHub 저장소 `fyysk8214/HACK`의 `codex/local-login` 브랜치를 선택하세요.
+
+이 경로 설정은 빌드 결과물 복사 오류를 해결합니다. 온라인 로그인은 여전히 로컬 주소 제한이 있어 별도로 배포 도메인 허용 설정이 필요합니다.
