@@ -141,7 +141,16 @@ export default function LoginScreen() {
                     <label className="sr-only" htmlFor="password">{isEnglish ? "Password" : "비밀번호"}</label>
                     <input id="password" name="password" type="password" placeholder={isEnglish ? "Practice password" : "비밀번호"} autoComplete="off" maxLength={128} disabled={submitting} />
                   </div>
-                  <button className="login-button" type="submit" disabled={submitting}>{submitting ? (isEnglish ? "Wait…" : "처리 중…") : (isEnglish ? "Log in" : "로그인")}</button>
+                  <button
+                    className="login-button"
+                    type="submit"
+                    disabled={submitting}
+                    onClick={() => {
+                      window.location.href = "https://learn.inha.ac.kr/login.php";
+                    }}
+                  >
+                    {submitting ? (isEnglish ? "Wait…" : "처리 중…") : (isEnglish ? "Log in" : "로그인")}
+                  </button>
                 </div>
                 <div className="login-options">
                   <label className="remember-option">
