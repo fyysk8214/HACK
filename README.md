@@ -9,20 +9,21 @@ Node.js 24 이상을 사용합니다. 현재 설치된 Node.js 24.15.0에서 확
 ```powershell
 cd "C:\Users\김정우\OneDrive\Desktop\hack"
 npm run db:init
+npm run db:seed
 npm run dev
 ```
 
-http://127.0.0.1:3000 에서 먼저 **연습용 계정 등록**을 누르고 아이디와 비밀번호를 등록합니다. 이후 같은 정보로 로그인하면 페이지 이동 없이 **로그인 성공** 팝업이 뜹니다.
+http://127.0.0.1:3000 에서 **아이디 `practice01`, 비밀번호 `Practice2026!`**로 로그인하면 페이지 이동 없이 **로그인 성공** 팝업이 뜹니다. 화면이나 API를 통한 계정 등록 기능은 없습니다. 운영자가 `npm run db:seed`로 연습용 계정을 DB에 추가합니다. 이미 있는 계정의 비밀번호는 변경하지 않습니다.
 
 - 아이디: 3~32자, 한글·영문·숫자·점·밑줄·하이픈
 - 비밀번호: 8~128자
 - 입력 항목은 `username`, `password` 두 가지입니다.
-- 등록 성공, 중복 아이디, 로그인 실패, 연결 오류를 팝업으로 안내합니다.
+- 로그인 성공, 로그인 실패, 연결 오류를 팝업으로 안내합니다.
 - 비밀번호 입력은 요청 처리 후 비워지고, 비밀번호 원문은 DB나 로그에 저장하지 않습니다.
 
 ## 백엔드와 DB
 
-Next.js 서버에 `POST /api/auth/register`, `POST /api/auth/login`이 있습니다. 두 API는 JSON `{ "username": "demo_user", "password": "practice123!" }`을 받습니다.
+Next.js 서버의 `POST /api/auth/login`은 JSON `{ "username": "practice01", "password": "Practice2026!" }`을 받습니다. `POST /api/auth/register`는 제공하지 않습니다.
 
 SQLite DB는 첫 요청 또는 `npm run db:init` 시 `data/demo.sqlite`에 생성됩니다. `users` 테이블에는 `username`, `password_hash` 두 열만 저장합니다. 비밀번호는 무작위 salt와 scrypt로 해시하고, SQL에는 매개변수 바인딩을 사용합니다. `attempts` 테이블은 요청 횟수 제한을 관리합니다. DB 파일은 Git에서 제외합니다.
 

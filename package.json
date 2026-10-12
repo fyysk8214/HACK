@@ -8,6 +8,7 @@
     "start": "next start --hostname 127.0.0.1",
     "lint": "eslint",
     "db:init": "node scripts/init-db.mjs",
+    "db:seed": "node scripts/seed-demo.mjs",
     "test:auth": "node --test tests/auth.test.mjs"
   },
   "engines": { "node": ">=24" },

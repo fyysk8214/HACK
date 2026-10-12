@@ -1,5 +1,5 @@
-import { handleAuth } from "@/lib/demo-auth.mjs";
+import { handleLogin } from "@/lib/demo-auth.mjs";
 
 export async function POST(request: Request) {
-  return handleAuth(request, "login");
+  return handleLogin(request);
 }

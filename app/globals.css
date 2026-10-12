@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 .practice-banner { padding: 12px 20px; background: #fff2c6; color: #624700; font-size: 13px; line-height: 1.6; font-weight: 700; }
-.practice-mode-button { display: block; margin-top: 16px; padding: 0; background: none; color: #fff; text-decoration: underline; font-size: 12px; }
 .practice-hint { font-size: 11px; line-height: 1.6; color: #d5e9f6; margin: 8px 0 16px; }
-.login-panel:has(.practice-mode-button) { height: auto; min-height: 268px; }
+.login-panel:has(.practice-hint) { height: auto; min-height: 228px; }
 button:disabled { opacity: .65; cursor: wait; }
 
 /* 참고 화면에 맞춰 UI의 크기와 간격을 기존의 80%로 조정했습니다. */

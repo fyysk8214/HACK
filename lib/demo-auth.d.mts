@@ -1,2 +1,3 @@
 export function initDatabase(): unknown;
-export function handleAuth(request: Request, action: "register" | "login"): Promise<Response>;
+export function handleLogin(request: Request): Promise<Response>;
+export function addPracticeAccount(username: string, password: string): Promise<boolean>;

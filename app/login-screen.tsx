@@ -41,7 +41,6 @@ function ShortcutIcon({ kind }: { kind: string }) {
 
 export default function LoginScreen() {
   const [language, setLanguage] = useState("ko");
-  const [mode, setMode] = useState<"login" | "register">("login");
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState({ title: "", text: "" });
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -79,9 +78,8 @@ export default function LoginScreen() {
       return;
     }
     setSubmitting(true);
-    const currentMode = mode;
     try {
-      const response = await fetch(`/api/auth/${currentMode}`, {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password: password.value }),
@@ -92,16 +90,11 @@ export default function LoginScreen() {
         showMessage(isEnglish ? "Please try again" : "요청 실패", result.message);
         return;
       }
-      if (currentMode === "register") {
-        setMode("login");
-        showMessage(isEnglish ? "Account created" : "계정 등록 완료", isEnglish ? "Your practice account was created. Log in with the same username and password." : result.message);
-      } else {
-        try {
-          if (rememberRef.current?.checked) localStorage.setItem("local-practice-username", username);
-          else localStorage.removeItem("local-practice-username");
-        } catch { /* 저장소 접근이 제한되면 기억 기능만 생략합니다. */ }
-        showMessage(isEnglish ? "Login successful" : "로그인 성공", isEnglish ? "You successfully logged in with your practice account." : result.message);
-      }
+      try {
+        if (rememberRef.current?.checked) localStorage.setItem("local-practice-username", username);
+        else localStorage.removeItem("local-practice-username");
+      } catch { /* 저장소 접근이 제한되면 기억 기능만 생략합니다. */ }
+      showMessage(isEnglish ? "Login successful" : "로그인 성공", isEnglish ? "You successfully logged in with your practice account." : result.message);
     } catch {
       showMessage(isEnglish ? "Connection error" : "연결 오류", isEnglish ? "Could not connect to the server. Please try again." : "서버에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.");
     } finally {
@@ -133,7 +126,7 @@ export default function LoginScreen() {
           <div className="login-row">
             <section className="login-panel" aria-labelledby="login-heading">
               <div className="login-panel-heading">
-                <h1 id="login-heading">{mode === "register" ? "REGISTER" : "LOGIN"}</h1>
+                <h1 id="login-heading">LOGIN</h1>
                 <label className="language-picker">
                   <span aria-hidden="true">{isEnglish ? "🇺🇸" : "🇰🇷"}</span>
                   <select aria-label="언어 선택" value={language} onChange={(event) => setLanguage(event.target.value)}>
@@ -149,9 +142,9 @@ export default function LoginScreen() {
                     <label className="sr-only" htmlFor="username">{isEnglish ? "Username" : "사용자 아이디"}</label>
                     <input id="username" name="username" ref={usernameRef} placeholder={isEnglish ? "Practice username" : "연습용 아이디"} autoComplete="off" maxLength={32} disabled={submitting} aria-describedby="practice-hint" />
                     <label className="sr-only" htmlFor="password">{isEnglish ? "Password" : "비밀번호"}</label>
-                    <input id="password" name="password" type="password" placeholder={isEnglish ? "Practice password" : "연습용 비밀번호"} autoComplete={mode === "register" ? "new-password" : "off"} maxLength={128} disabled={submitting} aria-describedby="practice-hint" />
+                    <input id="password" name="password" type="password" placeholder={isEnglish ? "Practice password" : "연습용 비밀번호"} autoComplete="off" maxLength={128} disabled={submitting} aria-describedby="practice-hint" />
                   </div>
-                  <button className="login-button" type="submit" disabled={submitting}>{submitting ? (isEnglish ? "Wait…" : "처리 중…") : mode === "register" ? (isEnglish ? "Register" : "계정 등록") : (isEnglish ? "Log in" : "로그인")}</button>
+                  <button className="login-button" type="submit" disabled={submitting}>{submitting ? (isEnglish ? "Wait…" : "처리 중…") : (isEnglish ? "Log in" : "로그인")}</button>
                 </div>
                 <div className="login-options">
                   <label className="remember-option">
@@ -167,13 +160,6 @@ export default function LoginScreen() {
                   </button>
                 </div>
               </form>
-              <button className="practice-mode-button" type="button" disabled={submitting} onClick={() => {
-                setMode(mode === "login" ? "register" : "login");
-                const passwordInput = document.getElementById("password") as HTMLInputElement | null;
-                if (passwordInput) passwordInput.value = "";
-              }}>
-                {mode === "login" ? (isEnglish ? "Create a practice account" : "연습용 계정 등록") : (isEnglish ? "Back to login" : "로그인으로 돌아가기")}
-              </button>
               <p id="practice-hint" className="practice-hint">{isEnglish ? "Username: 3–32 characters · Password: 8–128" : "아이디 3~32자 · 비밀번호 8~128자"}</p>
             </section>
 
