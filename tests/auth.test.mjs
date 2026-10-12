@@ -58,3 +58,27 @@ test("Next.js internal localhost URL respects the public loopback Host and Origi
   assert.equal((await handleLogin(normalized)).status, 200);
   assert.equal((await handleLogin(request({}, { Host: "external.example:3000" }))).status, 403);
 });
+
+test("deployed HTTPS login works through an HTTP proxy and rejects other origins", async () => {
+  const deploymentOrigin = "https://port-next-hack-mqjicw77f2ecd392.sel3.cloudtype.app";
+  const deploymentHost = new URL(deploymentOrigin).host;
+  const input = { username: "demo_user", password: "practice123!" };
+  const cloudRequest = (headers = {}) => request(input, {
+    Host: deploymentHost,
+    Origin: deploymentOrigin,
+    "sec-fetch-site": "same-origin",
+    ...headers,
+  });
+  assert.equal((await handleLogin(cloudRequest())).status, 200);
+  assert.equal((await handleLogin(new Request(`${deploymentOrigin}/api/auth/login`, {
+    method: "POST", headers: { "Content-Type": "application/json", Origin: deploymentOrigin },
+    body: JSON.stringify(input),
+  }))).status, 200);
+  assert.equal((await handleLogin(cloudRequest({ Origin: "https://other.example" }))).status, 403);
+  assert.equal((await handleLogin(cloudRequest({ Origin: `http://${deploymentHost}` }))).status, 403);
+  assert.equal((await handleLogin(cloudRequest({ "sec-fetch-site": "cross-site" }))).status, 403);
+  for (const host of [`${deploymentHost}.other.example`, `other-${deploymentHost}`, `${deploymentHost}:8443`]) {
+    assert.equal((await handleLogin(cloudRequest({ Host: host }))).status, 403);
+  }
+  assert.equal((await handleLogin(cloudRequest({ Host: "other.example", "x-forwarded-host": deploymentHost }))).status, 403);
+});
