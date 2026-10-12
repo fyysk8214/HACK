@@ -74,7 +74,7 @@ export default function LoginScreen() {
     const password = form.elements.namedItem("password") as HTMLInputElement;
     const username = usernameRef.current?.value.trim() ?? "";
     if (!username || !password.value) {
-      showMessage(isEnglish ? "Check input" : "입력 확인", isEnglish ? "Enter a practice username and password." : "연습용 아이디와 비밀번호를 입력해 주세요.");
+      showMessage(isEnglish ? "Check input" : "입력 확인", isEnglish ? "Enter a practice username and password." : "아이디와 비밀번호를 입력해 주세요.");
       return;
     }
     setSubmitting(true);
@@ -137,9 +137,9 @@ export default function LoginScreen() {
                 <div className="credentials">
                   <div className="credential-fields">
                     <label className="sr-only" htmlFor="username">{isEnglish ? "Username" : "사용자 아이디"}</label>
-                    <input id="username" name="username" ref={usernameRef} placeholder={isEnglish ? "Practice username" : "연습용 아이디"} autoComplete="off" maxLength={32} disabled={submitting} />
+                    <input id="username" name="username" ref={usernameRef} placeholder={isEnglish ? "Practice username" : "아이디"} autoComplete="off" maxLength={32} disabled={submitting} />
                     <label className="sr-only" htmlFor="password">{isEnglish ? "Password" : "비밀번호"}</label>
-                    <input id="password" name="password" type="password" placeholder={isEnglish ? "Practice password" : "연습용 비밀번호"} autoComplete="off" maxLength={128} disabled={submitting} />
+                    <input id="password" name="password" type="password" placeholder={isEnglish ? "Practice password" : "비밀번호"} autoComplete="off" maxLength={128} disabled={submitting} />
                   </div>
                   <button className="login-button" type="submit" disabled={submitting}>{submitting ? (isEnglish ? "Wait…" : "처리 중…") : (isEnglish ? "Log in" : "로그인")}</button>
                 </div>
