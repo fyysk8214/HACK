@@ -140,9 +140,9 @@ export default function LoginScreen() {
                 <div className="credentials">
                   <div className="credential-fields">
                     <label className="sr-only" htmlFor="username">{isEnglish ? "Username" : "사용자 아이디"}</label>
-                    <input id="username" name="username" ref={usernameRef} placeholder={isEnglish ? "Practice username" : "연습용 아이디"} autoComplete="off" maxLength={32} disabled={submitting} aria-describedby="practice-hint" />
+                    <input id="username" name="username" ref={usernameRef} placeholder={isEnglish ? "Practice username" : "연습용 아이디"} autoComplete="off" maxLength={32} disabled={submitting} />
                     <label className="sr-only" htmlFor="password">{isEnglish ? "Password" : "비밀번호"}</label>
-                    <input id="password" name="password" type="password" placeholder={isEnglish ? "Practice password" : "연습용 비밀번호"} autoComplete="off" maxLength={128} disabled={submitting} aria-describedby="practice-hint" />
+                    <input id="password" name="password" type="password" placeholder={isEnglish ? "Practice password" : "연습용 비밀번호"} autoComplete="off" maxLength={128} disabled={submitting} />
                   </div>
                   <button className="login-button" type="submit" disabled={submitting}>{submitting ? (isEnglish ? "Wait…" : "처리 중…") : (isEnglish ? "Log in" : "로그인")}</button>
                 </div>
@@ -160,7 +160,6 @@ export default function LoginScreen() {
                   </button>
                 </div>
               </form>
-              <p id="practice-hint" className="practice-hint">{isEnglish ? "Username: 3–32 characters · Password: 8–128" : "아이디 3~32자 · 비밀번호 8~128자"}</p>
             </section>
 
             <nav className="shortcut-panel" aria-label="학교 서비스 바로가기">
